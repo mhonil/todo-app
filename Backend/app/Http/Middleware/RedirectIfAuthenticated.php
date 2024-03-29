@@ -18,13 +18,18 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
-
+    
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // If the request expects JSON, return a JSON response instead of redirecting
+                if ($request->expectsJson()) {
+                    return response()->json(['message' => 'Already authenticated.'], 200);
+                }
+    
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-
+    
         return $next($request);
     }
 }
