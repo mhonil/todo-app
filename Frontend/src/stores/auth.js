@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-     
+
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     authUser: null,
@@ -30,7 +30,7 @@ export const useAuthStore = defineStore("auth", {
           email: data.email,
           password: data.password,
         });
-        this.router.push("/show");
+        this.router.push("/");
       } catch (error) {
         if (error.response.status === 422) {
           this.authErrors = error.response.data.errors;
@@ -47,7 +47,7 @@ export const useAuthStore = defineStore("auth", {
           password: data.password,
           password_confirmation: data.password_confirmation,
         });
-        this.router.push("/show");
+        this.router.push("/");
       } catch (error) {
         if (error.response.status === 422) {
           this.authErrors = error.response.data.errors;
