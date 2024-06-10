@@ -4,6 +4,7 @@ import { useAuthStore } from "../stores/auth";
 const authStore = useAuthStore();
 </script>
 <template>
+
   <div class="relative">
     <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
       <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
